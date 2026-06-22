@@ -63,7 +63,10 @@ void main()
     }
 
     if(found == 0)
+    {
         printf("\nEmployee Not Found");
-
+    }else
+    {
     printf("\nTotal Comparisons Made : %d", comp);
+    }
 }
