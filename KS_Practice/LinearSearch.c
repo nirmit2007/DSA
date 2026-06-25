@@ -1,3 +1,5 @@
+/*Linear Search : Linear Search is a searching technique in which each element is checked one by one until the required element is found or the list ends.(No require for sort) */
+
 #include<stdio.h>
 
 int main()
