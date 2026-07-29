@@ -1,76 +1,71 @@
 #include<stdio.h>
+
 #define SIZE 5
-int front=-1;
-int rear=-1;
+
+int front = -1;
+int rear = -1;
 int cq[SIZE];
+
 void enQ(int data)
 {
-    if((rear==front-1) || (front==0 && rear==SIZE-1))
+    if((rear + 1) % SIZE == front)
     {
-        printf("\nQueue is FULL!!!");
+        printf("\nQueue is FULL...");
     }
-    
-    else if(front==-1 || rear==-1)
+    else if(front == -1)
+    {
+        front = rear = 0;
+        cq[rear] = data;
+    }
+    else
+    {
+        rear = (rear + 1) % SIZE;
+        cq[rear] = data;
+    }
+}
+
+void deQ()
+{
+    if(front == -1)
     {
         printf("\nQueue is EMPTY...");
     }
-    else{
-        if(rear==SIZE-1)
-        {
-            rear=0;    
-        }
-        rear++;
-        cq[rear] = data;
-        if(front==-1)
-        {
-            front=0;
-        }
+    else if(front == rear)
+    {
+        printf("\n%d Removed.", cq[front]);
+        front = rear = -1;
     }
-    
+    else
+    {
+        printf("\n%d Removed.", cq[front]);
+        front = (front + 1) % SIZE;
+    }
 }
-void deQ()
-{
-    
-    if(front==-1)
-    {
-        printf("\nQueue if EMPTY... ");
-    }
-    else if(front==SIZE-1)
-    {
-        front=0;
-        
-    }
-    else if(front==rear)
-    {
-        
-        printf("\n%d removed..",cq[front]);
-        front =-1;
-        rear =-1;
-    }
-    else{
-        printf("\n%d removed..",cq[front]);
-        front++;
-    
-    }   
-}
+
 void disp()
 {
-    if(front==-1)
+    if(front == -1)
     {
-        printf("\nQueue if EMPTY... ");
+        printf("\nQueue is EMPTY...");
     }
-    else{
-    
-        for(int i=front;i<SIZE;i++)
+    else
+    {
+        int i = front;
+
+        printf("\nQueue : ");
+
+        while(1)
         {
-            printf(" %d",cq[i]);
+            printf("%d ", cq[i]);
+
+            if(i == rear)
+                break;
+
+            i = (i + 1) % SIZE;
         }
-        for(int i=0;i<=rear;i++)
-        {
-            printf(" %d",cq[i]);
-        }
-    }    
+    }
 }
+
 int main()
 {
     enQ(10);
@@ -78,5 +73,18 @@ int main()
     enQ(30);
     enQ(40);
     enQ(50);
+
+    disp();
+
+    deQ();
+    deQ();
+
+    disp();
+
+    enQ(60);
+    enQ(70);
+
+    disp();
+
     return 0;
 }
