@@ -1,0 +1,38 @@
+Step 1:
+Low = 0
+High = 8
+
+Mid = (Low + High) / 2
+    = (0 + 8) / 2
+    = 4
+
+A[4] = 41
+
+50 > 41
+Therefore, search in the right half.
+
+Low = Mid + 1 = 5
+Step 2:
+Low = 5
+High = 8
+
+Mid = (5 + 8) / 2
+    = 6
+
+A[6] = 49
+
+50 > 49
+Therefore, search in the right half.
+
+Low = Mid + 1 = 7
+Step 3:
+Low = 7
+High = 8
+
+Mid = (7 + 8) / 2
+    = 7
+
+A[7] = 50
+
+50 = 50
+Therefore, element 50 is FOUND.
